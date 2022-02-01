@@ -16,9 +16,10 @@ std::ostream& operator<<(std::ostream& out, const std::vector<T>& v) {
 }
 
 int FindMaximumSubarray(const std::vector<int>& v) {
-	int max_end = 0, max_sum = 0;
+	int max_end = v[0], max_sum = v[0];
 
-	for (const int a : v) {
+	for (int i = 1; i < v.size(); i += 1) {
+		const int a = v[i];
 		max_end = std::max(a, a + max_end);
 		max_sum = std::max(max_sum, max_end);
 	}
